@@ -1,0 +1,184 @@
+                                                 
+
+
+CREATE TRIGGER 
+create or replace trigger bk
+before update or delete on library
+for each row 
+begin
+insert into bklib values(:old.bookid,:old.bookname,:old.author,:old.publisher,:old.price,:old.purchasedate);
+end;
+/
+OUTPUT:
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Sun Sep 28 07:15:39 2025
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Enter user-name: system
+Enter password:
+Last Successful login time: Fri Sep 26 2025 07:55:22 +05:30
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL> create table library(bookid int,bookname varchar(20),author varchar(20),publisher varchar(20),price float , purchasedate date);
+
+Table created.
+
+SQL> create table bklib as select * from library;
+
+Table created.
+
+SQL> insert into library values(101,'dbms','korth','willy',700,'20-jul-2025');
+
+1 row created.
+
+SQL> insert into library values(101,'computer design','david','morgen,500,'4-aug-2025');
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> insert into library values(101,'computer design','david','morgen',500,'4-aug-2025');
+
+1 row created.
+
+SQL> insert into library values(101,'morden operating system','andrew','pearson',600,'20-aug-2025');
+insert into library values(101,'morden operating system','andrew','pearson',600,'20-aug-2025')
+                               *
+ERROR at line 1:
+ORA-12899: value too large for column "SYSTEM"."LIBRARY"."BOOKNAME" (actual:
+23, maximum: 20)
+
+
+SQL> insert into library values(101,'morden os','andrew','pearson',600,'20-aug-2025');
+
+1 row created.
+
+SQL> insert into library values(101,'embedded system','jonathan','smith',650,'20-sep-2025');
+
+1 row created.
+
+SQL> select * from library;
+
+    BOOKID BOOKNAME             AUTHOR               PUBLISHER
+---------- -------------------- -------------------- --------------------
+     PRICE PURCHASED
+---------- ---------
+       101 dbms                 korth                willy
+       700 20-JUL-25
+
+       101 computer design      david                morgen
+       500 04-AUG-25
+
+       101 morden os            andrew               pearson
+       600 20-AUG-25
+
+
+    BOOKID BOOKNAME             AUTHOR               PUBLISHER
+---------- -------------------- -------------------- --------------------
+     PRICE PURCHASED
+---------- ---------
+       101 embedded system      jonathan             smith
+       650 20-SEP-25
+
+
+SQL> C:\Users\Gaurav\OneDrive\Documents\Desktop\mysql\tejas.sql
+SP2-0023: String not found.
+SQL> @ C:\Users\Gaurav\OneDrive\Documents\Desktop\mysql\tejas.sql
+
+Warning: Trigger created with compilation errors.
+
+SQL> @ C:\Users\Gaurav\OneDrive\Documents\Desktop\mysql\tejas.sql
+
+Warning: Trigger created with compilation errors.
+
+SQL> @ C:\Users\Gaurav\OneDrive\Documents\Desktop\mysql\tejas.sql
+
+Trigger created.
+
+SQL> delete from library;
+
+4 rows deleted.
+
+SQL> select * from library;
+
+no rows selected
+
+SQL> select * from bklib;
+
+    BOOKID BOOKNAME             AUTHOR               PUBLISHER
+---------- -------------------- -------------------- --------------------
+     PRICE PURCHASED
+---------- ---------
+       101 dbms                 korth                willy
+       700 20-JUL-25
+
+       101 computer design      david                morgen
+       500 04-AUG-25
+
+       101 morden os            andrew               pearson
+       600 20-AUG-25
+
+
+    BOOKID BOOKNAME             AUTHOR               PUBLISHER
+---------- -------------------- -------------------- --------------------
+     PRICE PURCHASED
+---------- ---------
+       101 embedded system      jonathan             smith
+       650 20-SEP-25
+
+
+SQL> create table library1(bookid int,bookname varchar(20),author varchar(20),publisher varchar(20),price float , purchasedate date);
+
+Table created.
+
+STATEMENT TRIGGER:
+create or replace trigger statement
+before update or delete or insert on library1
+for each row 
+begin
+if rtrim(upper(to_char(sysdate,'day','nls_date_language=english')))='SUNDAY' then 
+raise_application_error(-20001,'does not allowed opration of update d, delete , insert on sunday');
+end if;
+end;
+/
+OUTPUT:
+
+SQL> @ C:\Users\Gaurav\OneDrive\Documents\Desktop\mysql\tej.sql
+before update or delete or insert on lib
+                                     *
+ERROR at line 2:
+ORA-00942: table or view does not exist
+
+
+SQL> @ C:\Users\Gaurav\OneDrive\Documents\Desktop\mysql\tej.sql
+
+Trigger created.
+
+SQL> insert into library1 values(101,'morden operating system','andrew','pearson',600,'20-aug-2025');
+insert into library1 values(101,'morden operating system','andrew','pearson',600,'20-aug-2025')
+                                *
+ERROR at line 1:
+ORA-12899: value too large for column "SYSTEM"."LIBRARY1"."BOOKNAME" (actual:
+23, maximum: 20)
+
+
+SQL> insert into library1 values(101,'morden os','andrew','pearson',600,'20-aug-2025');
+insert into library1 values(101,'morden os','andrew','pearson',600,'20-aug-2025')
+            *
+ERROR at line 1:
+ORA-20001: does not allowed opration of update d, delete , insert on sunday
+ORA-06512: at "SYSTEM.STATEMENT", line 3
+ORA-04088: error during execution of trigger 'SYSTEM.STATEMENT'
+
+
+SQL> delete from library1;
+
+does not allowed opration of update d, delete , insert on sunday
+ORA-06512: at "SYSTEM.STATEMENT", line 3
+ORA-04088: error during execution of trigger 'SYSTEM.STATEMENT'
+
+SQL>
