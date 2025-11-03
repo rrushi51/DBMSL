@@ -1,0 +1,114 @@
+PRACTICAL NO:9
+use demoexample
+switched to db demoexample
+db.createCollection('stud')
+{ ok: 1 }
+show  dbs
+admin        40.00 KiB
+config       72.00 KiB
+demoexample   8.00 KiB
+local        40.00 KiB
+db.stud.insertOne({rollno:101,name:'Tejas'});
+{
+  acknowledged: true,
+  insertedId: ObjectId('68dfe387b9594c2a5a31923a')
+}
+db.stud.insertOne({rollno:102,name:{fname:'Pranav',mname:'Tukaram',lname:'Gaikwad'}});
+{
+  acknowledged: true,
+  insertedId: ObjectId('68dfe3dab9594c2a5a31923b')
+}
+db.stud.find()
+{
+  _id: ObjectId('68dfe387b9594c2a5a31923a'),
+  rollno: 101,
+  name: 'Tejas'
+}
+{
+  _id: ObjectId('68dfe3dab9594c2a5a31923b'),
+  rollno: 102,
+  name: {
+    fname: 'Pranav',
+    mname: 'Tukaram',
+    lname: 'Gaikwad'
+  }
+}
+db.stud.insertMany([{rollno:103,name:'Rohit',class:'TE',fees:200000}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('68dfe46bb9594c2a5a31923c')
+  }
+}
+db.stud.update({rollno:101},$set:{name:'Gaurav'})
+SyntaxError: Unexpected token, expected "," (1:32)
+
+
+db.stud.update({rollno:101},{$set:{name:'Gaurav'}})
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.stud.remove({rollno:103})
+DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, findOneAndDelete, or bulkWrite.
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+db.stud.find();
+{
+  _id: ObjectId('68dfe387b9594c2a5a31923a'),
+  rollno: 101,
+  name: 'Gaurav'
+}
+{
+  _id: ObjectId('68dfe3dab9594c2a5a31923b'),
+  rollno: 102,
+  name: {
+    fname: 'Pranav',
+    mname: 'Tukaram',
+    lname: 'Gaikwad'
+  }
+}
+db.stud.insertOne({RollNo:104,name:{fname:'Yash',mname:'Nivrutti',lname:'Sakore'},contact:[7499542760,8329225062],Class:'TE'})
+{
+  acknowledged: true,
+  insertedId: ObjectId('68dfe839b9594c2a5a31923d')
+}
+db.stud.find();
+{
+  _id: ObjectId('68dfe387b9594c2a5a31923a'),
+  rollno: 101,
+  name: 'Gaurav'
+}
+{
+  _id: ObjectId('68dfe3dab9594c2a5a31923b'),
+  rollno: 102,
+  name: {
+    fname: 'Pranav',
+    mname: 'Tukaram',
+    lname: 'Gaikwad'
+  }
+}
+{
+  _id: ObjectId('68dfe839b9594c2a5a31923d'),
+  RollNo: 104,
+  name: {
+    fname: 'Yash',
+    mname: 'Nivrutti',
+    lname: 'Sakore'
+  },
+  contact: [
+    7499542760,
+    8329225062
+  ],
+  Class: 'TE'
+}
+demoexample
+
+
+

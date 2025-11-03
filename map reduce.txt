@@ -1,0 +1,203 @@
+                             
+MapReduce functions:
+Microsoft Windows [Version 10.0.26100.6725]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\HP\Downloads\mongosh-2.5.8-win32-x64\mongosh-2.5.8-win32-x64\bin>mongosh
+Current Mongosh Log ID: 68e7c38f8d8e96e602cebea3
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.5.8
+Using MongoDB:          8.2.0
+Using Mongosh:          2.5.8
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-10-09T19:03:39.606+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use bank;
+switched to db bank
+bank> db.bank.insertMany([{cid:101,c_name:'priya',b_name:'SBI',branch:'pune',bal:800000}]);
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('68e7c4dc8d8e96e602cebea4') }
+}
+bank> db.bank.insertMany([{cid:102,c_name:'riya',b_name:'HDFC',branch:'mumbai',bal:900000}]);
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('68e7c4fc8d8e96e602cebea5') }
+}
+bank> db.bank.insertMany([{cid:103,c_name:'siya',b_name:'HDFC',branch:'pune',bal:1000000}]);
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('68e7c5128d8e96e602cebea6') }
+}
+bank> db.bank.insertMany([{cid:104,c_name:'miya',b_name:'Axis',branch:'mumbai',bal:500000}]);
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('68e7c5358d8e96e602cebea7') }
+}
+bank> db.bank.insertMany([{cid:105,c_name:'rohan',b_name:'Axis',branch:'mumbai',bal:3800000}]);
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('68e7c54b8d8e96e602cebea8') }
+}
+bank> db.bank.insertMany([{cid:106,c_name:'sumit',b_name:'SBI',branch:'mumbai',bal:365000}]);
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('68e7c56a8d8e96e602cebea9') }
+}
+bank> db.bank.insertMany([{cid:107,c_name:'rajesh',b_name:'Axis',branch:'mumbai',bal:450670}]);
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('68e7c58d8d8e96e602cebeaa') }
+}
+bank> db.bank.insertMany([{cid:108,c_name:'adinath',b_name:'HDFC',branch:'umerga',bal:543210}]);
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('68e7c5bd8d8e96e602cebeab') }
+}
+bank> db.bank.insertMany([{cid:109,c_name:'mohan',b_name:'HDFC',branch:'umerga',bal:875630}]);
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('68e7c5dc8d8e96e602cebeac') }
+}
+bank> db.bank.insertMany([{cid:110,c_name:'avishkar',b_name:'HDFC',branch:'latur',bal:8700030}]);
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('68e7c6008d8e96e602cebead') }
+}
+bank> db.bank.insertMany([{cid:111,c_name:'nishu',b_name:'SBI',branch:'latur',bal:670930}]);
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('68e7c62f8d8e96e602cebeae') }
+}
+bank> db.bank.insertMany([{cid:112,c_name:'niku',b_name:'SBI',branch:'talegoan',bal:65430930}]);
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('68e7c6608d8e96e602cebeaf') }
+}
+bank> db.bank.find();
+[
+  {
+    _id: ObjectId('68e7c4dc8d8e96e602cebea4'),
+    cid: 101,
+    c_name: 'priya',
+    b_name: 'SBI',
+    branch: 'pune',
+    bal: 800000
+  },
+  {
+    _id: ObjectId('68e7c4fc8d8e96e602cebea5'),
+    cid: 102,
+    c_name: 'riya',
+    b_name: 'HDFC',
+    branch: 'mumbai',
+    bal: 900000
+  },
+  {
+    _id: ObjectId('68e7c5128d8e96e602cebea6'),
+    cid: 103,
+    c_name: 'siya',
+    b_name: 'HDFC',
+    branch: 'pune',
+    bal: 1000000
+  },
+  {
+    _id: ObjectId('68e7c5358d8e96e602cebea7'),
+    cid: 104,
+    c_name: 'miya',
+    b_name: 'Axis',
+    branch: 'mumbai',
+    bal: 500000
+  },
+  {
+    _id: ObjectId('68e7c54b8d8e96e602cebea8'),
+    cid: 105,
+    c_name: 'rohan',
+    b_name: 'Axis',
+    branch: 'mumbai',
+    bal: 3800000
+  },
+  {
+    _id: ObjectId('68e7c56a8d8e96e602cebea9'),
+    cid: 106,
+    c_name: 'sumit',
+    b_name: 'SBI',
+    branch: 'mumbai',
+    bal: 365000
+  },
+  {
+    _id: ObjectId('68e7c58d8d8e96e602cebeaa'),
+    cid: 107,
+    c_name: 'rajesh',
+    b_name: 'Axis',
+    branch: 'mumbai',
+    bal: 450670
+  },
+  {
+    _id: ObjectId('68e7c5bd8d8e96e602cebeab'),
+    cid: 108,
+    c_name: 'adinath',
+    b_name: 'HDFC',
+    branch: 'umerga',
+    bal: 543210
+  },
+  {
+    _id: ObjectId('68e7c5dc8d8e96e602cebeac'),
+    cid: 109,
+    c_name: 'mohan',
+    b_name: 'HDFC',
+    branch: 'umerga',
+    bal: 875630
+  },
+  {
+    _id: ObjectId('68e7c6008d8e96e602cebead'),
+    cid: 110,
+    c_name: 'avishkar',
+    b_name: 'HDFC',
+    branch: 'latur',
+    bal: 8700030
+  },
+  {
+    _id: ObjectId('68e7c62f8d8e96e602cebeae'),
+    cid: 111,
+    c_name: 'nishu',
+    b_name: 'SBI',
+    branch: 'latur',
+    bal: 670930
+  },
+  {
+    _id: ObjectId('68e7c6608d8e96e602cebeaf'),
+    cid: 112,
+    c_name: 'niku',
+    b_name: 'SBI',
+    branch: 'talegoan',
+    bal: 65430930
+  }
+]
+bank> var map=function(){emit(this.cid,this.bal)};
+
+bank> var reduce=function(cid,bal){return Array.sum(bal)}
+
+bank> db.bank.mapReduce(map,reduce,{out:'transactions'})
+DeprecationWarning: Collection.mapReduce() is deprecated. Use an aggregation instead.
+See https://mongodb.com/docs/manual/core/map-reduce for details.
+{ result: 'transactions', ok: 1 }
+bank> db.transactions.find();
+[
+  { _id: 108, value: 543210 },
+  { _id: 105, value: 3800000 },
+  { _id: 103, value: 1000000 },
+  { _id: 101, value: 800000 },
+  { _id: 102, value: 900000 },
+  { _id: 106, value: 365000 },
+  { _id: 107, value: 450670 },
+  { _id: 104, value: 500000 },
+  { _id: 109, value: 875630 },
+  { _id: 110, value: 8700030 },
+  { _id: 111, value: 670930 },
+  { _id: 112, value: 65430930 }
+]
+Bank>
